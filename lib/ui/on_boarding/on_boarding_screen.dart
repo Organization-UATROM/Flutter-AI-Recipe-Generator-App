@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:rive/rive.dart' as rive;
+
 import '../auth/login/login_screen.dart';
 
 class OnBoardingScreen extends StatelessWidget {
@@ -59,7 +60,7 @@ class OnBoardingScreen extends StatelessWidget {
                         onTap: (){
                           controller.btnAnimationController.isActive=true;
                           Timer(const Duration(milliseconds: 1000),(){
-                            Get.to(const LoginScreen(),transition: Transition.rightToLeft);
+                            Get.offAll(const LoginScreen(),transition: Transition.rightToLeft);
                           });
                         },
                         child: SizedBox(

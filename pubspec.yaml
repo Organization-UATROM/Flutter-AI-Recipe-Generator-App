@@ -40,6 +40,7 @@ dependencies:
   flutter_svg: ^2.0.10+1
   http: ^1.2.2
   rive: ^0.13.12
+  flutter_screenutil: ^5.9.3
 
 
 dev_dependencies:
@@ -68,6 +69,8 @@ flutter:
   assets:
     - assets/RiveAssets/
     - assets/Backgrounds/
+    - assets/logo/
+    - assets/images/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
