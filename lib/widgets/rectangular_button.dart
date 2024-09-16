@@ -1,3 +1,4 @@
+import 'package:ai_recipe_generator/utils/app_text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../utils/app_colors.dart';
@@ -27,8 +28,7 @@ class RectangularButton extends StatelessWidget {
             )
                 :
                 Text(title,
-                  style: GoogleFonts.poppins().copyWith(
-                      fontFamily: 'Pop-M',fontSize: 14,color: AppColors.whiteColor,fontWeight: FontWeight.w500),)
+                  style: GoogleFonts.poppins().copyWith(fontSize: 14*AppTextStyles.scaleFactor,color: AppColors.whiteColor,fontWeight: FontWeight.w500),)
         ),
       ),
     );

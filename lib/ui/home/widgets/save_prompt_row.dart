@@ -1,7 +1,5 @@
 import 'package:ai_recipe_generator/ui/home/home_controller.dart';
-import 'package:ai_recipe_generator/utils/app_colors.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../utils/app_text_styles.dart';
@@ -20,7 +18,7 @@ class SavePromptRow extends StatelessWidget{
           Text('Save Prompt',style:AppTextStyles.blue14w400,),
           const Spacer(),
           Obx(()=>CupertinoSwitch(
-            // activeColor: AppColors.bgColor,
+            activeColor: const Color(0xffF37F6F),
 
               value: controller.isPromptSaved.value,
               onChanged: (value){
