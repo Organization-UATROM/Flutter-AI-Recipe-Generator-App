@@ -39,7 +39,7 @@ class AppTextStyles {
       fontWeight: FontWeight.w400);
 
   static TextStyle hintTextStyle=  GoogleFonts.poppins().copyWith(
-      color: AppColors.greyColor,fontSize: 10 * scaleFactor,
+      color: AppColors.greyColor,fontSize: 13 * scaleFactor,
       fontWeight: FontWeight.w300);
 
 }

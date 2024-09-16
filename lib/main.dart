@@ -1,3 +1,4 @@
+import 'package:ai_recipe_generator/ui/home/home_screen.dart';
 import 'package:ai_recipe_generator/ui/on_boarding/on_boarding_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -20,16 +21,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize: Size(393, 852),
+      designSize: const Size(393, 852),
       builder: (context,child) {
-        return GetMaterialApp(
+        return const GetMaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'Flutter Demo',
-          theme: ThemeData(
-            colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-            useMaterial3: true,
-          ),
-          home: const OnBoardingScreen(),
+          home: HomeScreen(),
         );
       }
     );
