@@ -1,21 +1,20 @@
-import 'package:ai_recipe_generator/ui/auth/login/login_controller.dart';
-import 'package:ai_recipe_generator/utils/app_text_styles.dart';
-import 'package:ai_recipe_generator/widgets/custom_text_field.dart';
-import 'package:ai_recipe_generator/widgets/rectangular_button.dart';
+import 'package:ai_recipe_generator/ui/auth/login/login_screen.dart';
+import 'package:ai_recipe_generator/ui/auth/sign_up/sign_up_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import '../../../utils/app_colors.dart';
-import '../sign_up/sign_up_screen.dart';
+import '../../../utils/app_text_styles.dart';
+import '../../../widgets/custom_text_field.dart';
+import '../../../widgets/rectangular_button.dart';
 
-class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
+class SignUpScreen extends StatelessWidget {
+  const SignUpScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    LoginController controller=Get.put(LoginController());
+    SignUpController controller=Get.put(SignUpController());
     return Scaffold(
       backgroundColor: AppColors.white2Color,
       body: SafeArea(
@@ -33,12 +32,12 @@ class LoginScreen extends StatelessWidget {
                   ),
                   Container(
                     decoration: BoxDecoration(
-                    color: AppColors.whiteColor,
-                      border: Border.all(
-                        color: AppColors.bgColor,
-                        width: 3
-                      ),
-                      borderRadius: BorderRadius.circular(12)
+                        color: AppColors.whiteColor,
+                        border: Border.all(
+                            color: AppColors.bgColor,
+                            width: 3
+                        ),
+                        borderRadius: BorderRadius.circular(12)
                     ),
                     child: Image.asset(
                       'assets/logo/logo (2).png',
@@ -51,7 +50,7 @@ class LoginScreen extends StatelessWidget {
                     height: 25,
                   ),
                   Text(
-                    'Sign In',
+                    'Sign Up',
                     style: AppTextStyles.blue24w500,
                   ),
                   const SizedBox(
@@ -117,20 +116,40 @@ class LoginScreen extends StatelessWidget {
                     ),
                   ),
                   ),
+                  const SizedBox(
+                    height: 10,
+                  ),
                   Container(
-                    alignment: Alignment.centerRight,
-                    padding: const EdgeInsets.only(top: 5),
-                    child: InkWell(
-                        onTap: () {
-                          // Get.to(const FindYourAccountView());
-                        },
-                        child: Text(
-                          "forgot password?",
-                          style: GoogleFonts.poppins().copyWith(
-                              color: AppColors.bgColor,
-                              fontSize: 10* controller.scaleFactor,
-                              fontWeight: FontWeight.w500),
-                        )),
+                    alignment: Alignment.centerLeft,
+                    padding: const EdgeInsets.only(right: 20, top: 5),
+                    child: Text(
+                      "Confirm Password",
+                      style: AppTextStyles.blue14w400,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 5,
+                  ),
+                  Obx(()=> SizedBox(
+                    height: 47,
+                    child: CustomTextField(
+                      hintText: '********',
+                      controller: controller.cPassController,
+                      obscureText: controller.toggleCPassIcon.value,
+                      suffIcon: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 12.0,vertical: 12.0),
+                        child: InkWell(
+                            onTap: () {
+                              controller.toggleCPassHandler();
+                            },
+                            child: (controller.toggleCPassIcon.value)
+                                ? SvgPicture.asset('assets/images/password_close.svg',)
+                                : SvgPicture.asset(
+                              'assets/images/password_open.svg',
+                            )),
+                      ),
+                    ),
+                  ),
                   ),
                   const SizedBox(
                     height: 20,
@@ -145,7 +164,7 @@ class LoginScreen extends StatelessWidget {
                             onPress: () {
                               // controller.signIn();
                             },
-                            title: 'Sign In',
+                            title: 'Sign Up',
                           ),
                         ),
                       ],
@@ -153,15 +172,15 @@ class LoginScreen extends StatelessWidget {
                   ),
                   InkWell(
                     onTap: (){
-                      Get.offAll(const SignUpScreen(),transition: Transition.rightToLeft);
+                      Get.offAll(const LoginScreen(),transition: Transition.leftToRight);
                     },
                     child: RichText(
                       text: TextSpan(
-                        text: "Don't have an account? ",
+                        text: "Already have an account? ",
                         style: AppTextStyles.blue14w400.copyWith(fontSize: 12*controller.scaleFactor),
                         children: <TextSpan>[
                           TextSpan(
-                            text: 'Sign up?',
+                            text: 'Sign In?',
                             style: AppTextStyles.blue14w400.copyWith(
                               fontSize: 12 * controller.scaleFactor,
                               fontWeight: FontWeight.bold,
