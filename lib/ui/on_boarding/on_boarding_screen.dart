@@ -16,6 +16,8 @@ class OnBoardingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print(context.width); // 360
+    print(context.height); // 758
     OnBoardingController controller=Get.isRegistered<OnBoardingController>() ?
     Get.find() : Get.put(OnBoardingController());
     return Scaffold(
@@ -80,7 +82,10 @@ class OnBoardingScreen extends StatelessWidget {
                                         const Icon(CupertinoIcons.arrow_right),
                                         const SizedBox(width: 8,),
                                         Text(" Let's start cooking",
-                                          style: GoogleFonts.poppins().copyWith(fontWeight: FontWeight.w600),),
+                                          style: GoogleFonts.poppins().copyWith(
+                                              fontWeight: FontWeight.w600,
+                                              fontSize: (14/758)*context.height,
+                                          ),),
                                       ],
                                     ))
                               ],
