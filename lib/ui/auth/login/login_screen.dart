@@ -1,6 +1,7 @@
 import 'package:ai_recipe_generator/ui/auth/login/login_controller.dart';
 import 'package:ai_recipe_generator/ui/home/home_screen.dart';
 import 'package:ai_recipe_generator/utils/app_text_styles.dart';
+import 'package:ai_recipe_generator/utils/extensions.dart';
 import 'package:ai_recipe_generator/widgets/custom_text_field.dart';
 import 'package:ai_recipe_generator/widgets/rectangular_button.dart';
 import 'package:flutter/material.dart';
@@ -18,93 +19,93 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     LoginController controller=Get.put(LoginController());
     return Scaffold(
-      backgroundColor: AppColors.white2Color,
+      backgroundColor: AppColors.whiteColor,
       body: SafeArea(
         child: SingleChildScrollView(
           physics: const ClampingScrollPhysics(),
           child: Center(
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24),
+              padding: EdgeInsets.symmetric(horizontal: context.resWidth(24)),
               child: Column(
                 // mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  const SizedBox(
-                    height: 74,
+                  SizedBox(
+                    height: context.resHeight(74),
                   ),
                   Container(
                     decoration: BoxDecoration(
                     color: AppColors.whiteColor,
                       border: Border.all(
                         color: AppColors.bgColor,
-                        width: 3
+                        width: context.resWidth(3)
                       ),
-                      borderRadius: BorderRadius.circular(12)
+                      borderRadius: BorderRadius.circular(context.resRadialSize(12))
                     ),
                     child: Image.asset(
                       'assets/logo/logo (2).png',
                       width: context.width*0.7,
-                      height: 75,
+                      height: context.resHeight(75),
                     ),
                   ),
                   // SvgPicture.asset('assets/images/Icons.svg',width:61.w,height:55.h),
-                  const SizedBox(
-                    height: 25,
+                  SizedBox(
+                    height: context.resHeight(25),
                   ),
                   Text(
                     'Sign In',
                     style: AppTextStyles.blue24w500,
                   ),
-                  const SizedBox(
-                    height: 5,
+                  SizedBox(
+                    height: context.resHeight(5),
                   ),
                   Text(
                     'Hi Welcome back, you’ve been missed',
                     style: AppTextStyles.grey12w400,
                   ),
-                  const SizedBox(
-                    height: 20,
+                  SizedBox(
+                    height: context.resHeight(20),
                   ),
                   Container(
                     alignment: Alignment.centerLeft,
-                    padding: const EdgeInsets.only(right: 20, top: 5),
+                    padding: EdgeInsets.only(right: context.resWidth(20), top: context.resHeight(5)),
                     child: Text(
                       "Email",
                       style: AppTextStyles.blue14w400,
                     ),
                   ),
-                  const SizedBox(
-                    height: 5,
+                  SizedBox(
+                    height: context.resHeight(5),
                   ),
                   SizedBox(
-                    height: 47,
+                    height: context.resHeight(47),
                     child: CustomTextField(
                       hintText: 'example@gmail.com',
                       controller: controller.emailController,
                     ),
                   ),
-                  const SizedBox(
-                    height: 10,
+                  SizedBox(
+                    height: context.resHeight(10),
                   ),
                   Container(
                     alignment: Alignment.centerLeft,
-                    padding: const EdgeInsets.only(right: 20, top: 5),
+                    padding: EdgeInsets.only(right: context.resWidth(20), top: context.resHeight(5)),
                     child: Text(
                       "Password",
                       style: AppTextStyles.blue14w400,
                     ),
                   ),
-                  const SizedBox(
-                    height: 5,
+                  SizedBox(
+                    height: context.resHeight(5),
                   ),
                   Obx(()=> SizedBox(
-                    height: 47,
+                    height: context.resHeight(47),
                     child: CustomTextField(
                       hintText: '********',
                       controller: controller.passController,
                       obscureText: controller.togglePassIcon.value,
                       suffIcon: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 12.0,vertical: 12.0),
+                        padding: EdgeInsets.symmetric(horizontal: context.resWidth(12),vertical: context.resHeight(12)),
                         child: InkWell(
                             onTap: () {
                               controller.togglePassHandler();
@@ -120,7 +121,7 @@ class LoginScreen extends StatelessWidget {
                   ),
                   Container(
                     alignment: Alignment.centerRight,
-                    padding: const EdgeInsets.only(top: 5),
+                    padding: EdgeInsets.only(top: context.resHeight(5)),
                     child: InkWell(
                         onTap: () {
                           // Get.to(const FindYourAccountView());
@@ -133,11 +134,11 @@ class LoginScreen extends StatelessWidget {
                               fontWeight: FontWeight.w500),
                         )),
                   ),
-                  const SizedBox(
-                    height: 20,
+                  SizedBox(
+                    height: context.resHeight(20),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(bottom: 10.0),
+                    padding: EdgeInsets.only(bottom: context.resHeight(10)),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -145,7 +146,7 @@ class LoginScreen extends StatelessWidget {
                           child: RectangularButton(
                             onPress: () {
                               // controller.signIn();
-                              Get.offAll(HomeScreen());
+                              Get.offAll(const HomeScreen());
                             },
                             title: 'Sign In',
                           ),

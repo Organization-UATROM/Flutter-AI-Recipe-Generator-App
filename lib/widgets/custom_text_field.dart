@@ -1,3 +1,4 @@
+import 'package:ai_recipe_generator/utils/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -14,6 +15,7 @@ class CustomTextField extends StatelessWidget {
   final FocusNode? focusNode;
   final bool? enabled;
   final TextInputType? textType;
+  final Function(String)? onSubmitted;
   final TextEditingController controller;
 
   CustomTextField({
@@ -25,7 +27,7 @@ class CustomTextField extends StatelessWidget {
     this.focusNode,
     this.obscureText=false,
     this.enabled=true,
-    this.textType
+    this.textType, this.onSubmitted
   });
 
   @override
@@ -39,24 +41,28 @@ class CustomTextField extends StatelessWidget {
       obscureText: obscureText ,
       obscuringCharacter: '*',
       style: AppTextStyles.black14w400,
+      textInputAction: TextInputAction.next,
+      onSubmitted:onSubmitted ?? (e){
+        FocusScope.of(context).requestFocus();
+      },
       decoration: InputDecoration(
-        contentPadding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+        contentPadding: EdgeInsets.symmetric(vertical: context.resHeight(12), horizontal: context.resHeight(16)),
         hintText: hintText,
         hintStyle: AppTextStyles.hintTextStyle,
-        fillColor: AppColors.whiteColor,
+        fillColor: AppColors.btnFillColor,
         filled: true,
         prefixIcon: preIcon,
         suffixIcon: suffIcon, // Now accepts any widget
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(context.resRadialSize(10)),
           borderSide: BorderSide(color: AppColors.btnFillColor),
         ),
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10),
-          borderSide: BorderSide(color: AppColors.btnFillColor),
+          borderRadius: BorderRadius.circular(context.resRadialSize(10)),
+          borderSide: BorderSide(color: AppColors.bgColor,width: context.resWidth(1.5)),
         ),
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(context.resRadialSize(10)),
           borderSide: BorderSide(color: AppColors.btnFillColor),
         ),
       ),

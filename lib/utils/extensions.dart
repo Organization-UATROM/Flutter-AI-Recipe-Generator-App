@@ -9,6 +9,14 @@ extension ResponsiveFontSize on BuildContext {
   }
 }
 
+// For Radial sizes such as icons and others
+extension ResponsiveRadialSize on BuildContext {
+  double resRadialSize(double baseRadialSize) {
+    /*(14/758)*MediaQuery.of(this).size.height*/
+    return (baseRadialSize / 758) * MediaQuery.of(this).size.height;
+  }
+}
+
 // For height
 extension ResponsiveHeight on BuildContext{
   double resHeight(double baseHeight){

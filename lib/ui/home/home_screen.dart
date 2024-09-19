@@ -23,7 +23,7 @@ class HomeScreen extends StatelessWidget {
     return WillPopScope(
       onWillPop: () => onWillPopDialog(), // Intercepts back button
       child: Scaffold(
-        backgroundColor: AppColors.white2Color,
+        backgroundColor: AppColors.whiteColor,
         appBar: AppBar(
           backgroundColor: AppColors.bgColor,
           centerTitle: true,
@@ -61,11 +61,18 @@ class HomeScreen extends StatelessWidget {
                 Container(
                     width: context.width,
                     decoration: BoxDecoration(
-                        color: AppColors.whiteColor,
+                        color: AppColors.btnFillColor,
                         borderRadius: BorderRadius.circular(10)),
                     child: Column(
                       children: [
-                        ReusableSelectionRow(title: 'Diet Type', onPress: () {}),
+                        ReusableSelectionRow(
+                            title: 'Diet Type',
+                            onPress: () {
+                              // showModalBottomSheet(context: context, builder: (context){
+                              //   return DietTypeBottomSheet();
+                              // });
+                              Get.bottomSheet(const DietTypeBottomSheet());
+                            }),
                         ReusableSelectionRow(
                             title: 'Calorie Range', onPress: () {}),
                         ReusableSelectionRow(
@@ -96,3 +103,22 @@ class HomeScreen extends StatelessWidget {
 }
 
 
+class DietTypeBottomSheet extends StatelessWidget {
+  const DietTypeBottomSheet({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: context.width,
+      height: 200,
+      margin: const EdgeInsets.symmetric(horizontal: 14),
+      decoration: BoxDecoration(
+        color: AppColors.whiteColor,
+        borderRadius: const BorderRadius.only(
+          topLeft: Radius.circular(12),
+          topRight: Radius.circular(12),
+        )
+      ),
+    );
+  }
+}
