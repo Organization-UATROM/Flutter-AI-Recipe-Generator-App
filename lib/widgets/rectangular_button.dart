@@ -1,4 +1,6 @@
+import 'package:ai_recipe_generator/ui/auth/login/login_screen.dart';
 import 'package:ai_recipe_generator/utils/app_text_styles.dart';
+import 'package:ai_recipe_generator/utils/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../utils/app_colors.dart';
@@ -14,21 +16,22 @@ class RectangularButton extends StatelessWidget {
     return InkWell(
       onTap: onPress,
       child: Container(
-        padding: const EdgeInsets.symmetric(vertical: 12,horizontal: 12),
-        height: 45,
-        width: 327,
+        padding: EdgeInsets.symmetric(vertical: context.resHeight(12),horizontal: context.resWidth(12)),
+        height: context.resHeight(45),
+        width: context.resWidth(327),
         decoration: BoxDecoration(
           color: AppColors.bgColor,
-          borderRadius: BorderRadius.circular(10)
+          borderRadius: BorderRadius.circular(context.resRadialSize(10))
         ),
         child:Center(
-            child:loading ? const Padding(
-              padding: EdgeInsets.all(4.0),
-              child: CircularProgressIndicator(),
+            child:loading ? Padding(
+              padding: EdgeInsets.all(context.resRadialSize(4)),
+              child: const CircularProgressIndicator(),
             )
                 :
                 Text(title,
-                  style: GoogleFonts.poppins().copyWith(fontSize: 14*AppTextStyles.scaleFactor,color: AppColors.whiteColor,fontWeight: FontWeight.w500),)
+                  style: GoogleFonts.poppins().copyWith(fontSize: 14*AppTextStyles.scaleFactor,
+                      color: AppColors.whiteColor,fontWeight: FontWeight.w500),)
         ),
       ),
     );

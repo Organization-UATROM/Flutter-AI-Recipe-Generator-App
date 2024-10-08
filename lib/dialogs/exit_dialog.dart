@@ -1,5 +1,6 @@
 import 'package:ai_recipe_generator/ui/auth/login/login_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 import '../utils/app_colors.dart';
@@ -19,7 +20,8 @@ onWillPopDialog(){
         onTap: (){
           // LocalStorage.remove(LocalStorageKeys.token);
           // LocalStorage.remove(LocalStorageKeys.role);
-          Get.offAll(const LoginScreen());
+          // Get.offAll(const LoginScreen());
+          SystemNavigator.pop();
         },
         child: Container(
           width: 94,

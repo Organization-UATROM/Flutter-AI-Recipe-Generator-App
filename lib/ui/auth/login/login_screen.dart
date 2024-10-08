@@ -1,5 +1,4 @@
 import 'package:ai_recipe_generator/ui/auth/login/login_controller.dart';
-import 'package:ai_recipe_generator/ui/home/home_screen.dart';
 import 'package:ai_recipe_generator/utils/app_text_styles.dart';
 import 'package:ai_recipe_generator/utils/extensions.dart';
 import 'package:ai_recipe_generator/widgets/custom_text_field.dart';
@@ -145,8 +144,7 @@ class LoginScreen extends StatelessWidget {
                         Expanded(
                           child: RectangularButton(
                             onPress: () {
-                              // controller.signIn();
-                              Get.offAll(const HomeScreen());
+                              controller.logIn();
                             },
                             title: 'Sign In',
                           ),

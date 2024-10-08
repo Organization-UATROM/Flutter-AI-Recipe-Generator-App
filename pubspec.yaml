@@ -41,6 +41,7 @@ dependencies:
   http: ^1.2.2
   rive: ^0.13.12
   flutter_screenutil: ^5.9.3
+  another_flushbar: ^1.12.30
 
 
 dev_dependencies:
